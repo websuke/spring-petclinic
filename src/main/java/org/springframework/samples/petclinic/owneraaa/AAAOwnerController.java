@@ -123,6 +123,7 @@ class AAAOwnerController {
 		List<Owner> listOwners = paginated.getContent();
 		setAttribute(page, model, paginated, listOwners);
 		return view;
+
 	}
 
 	private void setAttribute(int page, Model model, Page<Owner> paginated, List<Owner> listOwners) {
