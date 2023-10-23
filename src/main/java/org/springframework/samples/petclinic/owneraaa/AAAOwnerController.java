@@ -49,10 +49,12 @@ class AAAOwnerController {
 	private static final String OWNER1 = "owner";
 	private static final String OWNER_ID = "ownerId";
 
+	private static final String A = "A";
+
+
 	private final OwnerRepository ownerRepository;
 
-	private List<String> a = new LinkedList<>();
-	private String newVar;
+	private final List<String> a = new LinkedList<>();
 
 	public AAAOwnerController(OwnerRepository clinicService) {
 		this.ownerRepository = clinicService;
@@ -72,7 +74,6 @@ class AAAOwnerController {
 	public String initCreationForm(Map<String, Object> model) {
 		Owner owner = new Owner();
 		model.put(OWNER, owner);
-		model.put(OWNER1, owner);
 		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 	}
 
@@ -115,19 +116,18 @@ class AAAOwnerController {
 		}
 
 		// multiple owners found
-		return addPaginationModel(page, model, ownersResults, "owners/ownersList");
+		return addPaginationModel(page, model, ownersResults);
 	}
 
-	private String addPaginationModel(int page, Model model, Page<Owner> paginated, String view) {
+	private String addPaginationModel(int page, Model model, Page<Owner> paginated) {
 		model.addAttribute("listOwners", paginated);
 		List<Owner> listOwners = paginated.getContent();
 		setAttribute(page, model, paginated, listOwners);
-		return view;
+		return "owners/ownersList";
 	}
 
 	private void setAttribute(int page, Model model, Page<Owner> paginated, List<Owner> listOwners) {
-		newVar = "currentPage";
-		model.addAttribute(newVar, page);
+		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", paginated.getTotalPages());
 		model.addAttribute("totalItems", paginated.getTotalElements());
 		model.addAttribute("listOwners", listOwners);
