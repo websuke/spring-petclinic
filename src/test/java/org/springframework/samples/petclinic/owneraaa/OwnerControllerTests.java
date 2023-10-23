@@ -14,24 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic.owner;
-
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
-import java.time.LocalDate;
-import java.util.List;
+package org.springframework.samples.petclinic.owneraaa;
 
 import org.assertj.core.util.Lists;
 import org.hamcrest.BaseMatcher;
@@ -47,12 +30,29 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
+import java.util.List;
+
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
 /**
- * Test class for {@link OwnerController}
+ * Test class for {@link AAAOwnerController}
  *
  * @author Colin But
  */
-@WebMvcTest(OwnerController.class)
+@WebMvcTest(AAAOwnerController.class)
 class OwnerControllerTests {
 
 	private static final int TEST_OWNER_ID = 1;
@@ -208,6 +208,11 @@ class OwnerControllerTests {
 						if (pet.getVisits().isEmpty()) {
 							return false;
 						}
+						// @formatter:off
+						var msg = "1行目\n"
+								+ "2行目\n"
+								+ "3行目\n";
+						// @formatter:on
 						return true;
 					}
 
